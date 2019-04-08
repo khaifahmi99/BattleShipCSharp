@@ -9,7 +9,7 @@ namespace Conversion
         protected static Random _Random = new Random();
 
         private Dictionary<ShipName, Ship> _Ships = new Dictionary<ShipName, Ship>();
-        private SeaGrid _playerGrid = new SeaGrid(_Ships);
+        private SeaGrid _playerGrid;
         private ISeaGrid _enemyGrid;
         protected BattleShipsGame _game;
 
@@ -50,6 +50,7 @@ namespace Conversion
         public Player(BattleShipsGame controller)
         {
             _game = controller;
+            _playerGrid = new SeaGrid(_Ships);
 
             // for each ship add the ships name so the seagrid knows about them
             foreach (ShipName name in Enum.GetValues(typeof(ShipName)))
@@ -184,12 +185,16 @@ namespace Conversion
 
             return lst.GetEnumerator();
         }
+        IEnumerator<Ship> IEnumerable<Ship>.GetEnumerator()
+        {
+            return GetShipEnumerator();
+        }
 
         /// <summary>
-    /// Makes it possible to enumerate over the ships the player
-    /// has.
-    /// </summary>
-    /// <returns>A Ship enumerator</returns>
+        /// Makes it possible to enumerate over the ships the player
+        /// has.
+        /// </summary>
+        /// <returns>A Ship enumerator</returns>
         public IEnumerator GetEnumerator()
         {
             Ship[] result = new Ship[_Ships.Values.Count + 1];
