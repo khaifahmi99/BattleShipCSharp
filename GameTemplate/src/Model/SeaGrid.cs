@@ -9,13 +9,15 @@ namespace Conversion
         private const int _WIDTH = 10;
         private const int _HEIGHT = 10;
 
-        private Tile[,] _GameTiles = new Tile[Width - 1 + 1, Height - 1 + 1];
+        private Tile[,] _GameTiles = new Tile[_WIDTH - 1 + 1, _HEIGHT - 1 + 1];
         private Dictionary<ShipName, Ship> _Ships;
         private int _ShipsKilled = 0;
+        private int y;
+        private int x;
 
         /// <summary>
-    /// The sea grid has changed and should be redrawn.
-    /// </summary>
+        /// The sea grid has changed and should be redrawn.
+        /// </summary>
         public event EventHandler Changed;
 
         /// <summary>
@@ -134,7 +136,7 @@ namespace Conversion
                 int currentCol = col;
                 int dRow, dCol;
 
-                if (direction == direction.LeftRight)
+                if (direction == Direction.LeftRight)
                 {
                     dRow = 0;
                     dCol = 1;

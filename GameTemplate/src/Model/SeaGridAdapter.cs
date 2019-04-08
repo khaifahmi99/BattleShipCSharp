@@ -7,9 +7,9 @@ namespace Conversion
         private SeaGrid _MyGrid;
 
         /// <summary>
-    /// Create the SeaGridAdapter, with the grid, and it will allow it to be changed
-    /// </summary>
-    /// <param name="grid">the grid that needs to be adapted</param>
+        /// Create the SeaGridAdapter, with the grid, and it will allow it to be changed
+        /// </summary>
+        /// <param name="grid">the grid that needs to be adapted</param>
         public SeaGridAdapter(SeaGrid grid)
         {
             _MyGrid = grid;
@@ -37,7 +37,7 @@ namespace Conversion
         {
             get
             {
-                TileView result = _MyGrid.Item(x, y);
+                TileView result = _MyGrid.Item;
 
                 if (result == TileView.Ship)
                     return TileView.Sea;

@@ -16,12 +16,13 @@ namespace Conversion
         private int _shots;
         private int _hits;
         private int _misses;
+        private ShipName name;
 
         /// <summary>
-    /// Returns the game that the player is part of.
-    /// </summary>
-    /// <value>The game</value>
-    /// <returns>The game that the player is playing</returns>
+        /// Returns the game that the player is part of.
+        /// </summary>
+        /// <value>The game</value>
+        /// <returns>The game that the player is playing</returns>
         public BattleShipsGame Game
         {
             get
