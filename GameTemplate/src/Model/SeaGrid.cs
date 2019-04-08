@@ -5,6 +5,7 @@ namespace Conversion
 {
     public class SeaGrid : ISeaGrid
     {
+
         private const int _WIDTH = 10;
         private const int _HEIGHT = 10;
 
