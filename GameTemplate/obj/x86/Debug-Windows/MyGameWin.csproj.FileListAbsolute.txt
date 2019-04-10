@@ -54,3 +54,7 @@ C:\Users\Ultabook\Desktop\BattleShipCSharp\GameTemplate\obj\x86\Debug-Windows\My
 C:\Users\Ultabook\Desktop\BattleShipCSharp\GameTemplate\obj\x86\Debug-Windows\MyGame.exe
 C:\Users\Ultabook\Desktop\BattleShipCSharp\GameTemplate\obj\x86\Debug-Windows\MyGame.pdb
 C:\Users\Ultabook\Desktop\BattleShipCSharp\GameTemplate\obj\x86\Debug-Windows\MyGameWin.csprojAssemblyReference.cache
+E:\2019\STP\Week-5\BattleShipCSharp\GameTemplate\obj\x86\Debug-Windows\MyGameWin.csprojAssemblyReference.cache
+E:\2019\STP\Week-5\BattleShipCSharp\GameTemplate\obj\x86\Debug-Windows\MyGameWin.csproj.CoreCompileInputs.cache
+E:\2019\STP\Week-5\BattleShipCSharp\GameTemplate\obj\x86\Debug-Windows\MyGame.exe
+E:\2019\STP\Week-5\BattleShipCSharp\GameTemplate\obj\x86\Debug-Windows\MyGame.pdb

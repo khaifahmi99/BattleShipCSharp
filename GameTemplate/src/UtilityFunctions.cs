@@ -14,21 +14,22 @@ using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualBasic;
+using SwinGameSDK;
 
 static class UtilityFunctions
 {
-    public const static int FIELD_TOP = 122;
-    public const static int FIELD_LEFT = 349;
-    public const static int FIELD_WIDTH = 418;
-    public const static int FIELD_HEIGHT = 418;
+    public const int FIELD_TOP = 122;
+    public const int FIELD_LEFT = 349;
+    public const int FIELD_WIDTH = 418;
+    public const int FIELD_HEIGHT = 418;
 
-    public const static int MESSAGE_TOP = 548;
+    public const int MESSAGE_TOP = 548;
 
-    public const static int CELL_WIDTH = 40;
-    public const static int CELL_HEIGHT = 40;
-    public const static int CELL_GAP = 2;
+    public const int CELL_WIDTH = 40;
+    public const int CELL_HEIGHT = 40;
+    public const int CELL_GAP = 2;
 
-    public const static int SHIP_GAP = 3;
+    public const int SHIP_GAP = 3;
 
     private readonly static Color SMALL_SEA = SwinGame.RGBAColor(6, 60, 94, 255);
     private readonly static Color SMALL_SHIP = Color.Gray;
@@ -45,8 +46,8 @@ static class UtilityFunctions
     private readonly static Color SHIP_OUTLINE_COLOR = Color.White;
     private readonly static Color MESSAGE_COLOR = SwinGame.RGBAColor(2, 167, 252, 255);
 
-    public const static int ANIMATION_CELLS = 7;
-    public const static int FRAMES_PER_CELL = 8;
+    public const int ANIMATION_CELLS = 7;
+    public const int FRAMES_PER_CELL = 8;
 
     /// <summary>
     ///     ''' Determines if the mouse is in a given rectangle.
@@ -213,7 +214,7 @@ static class UtilityFunctions
             }
 
             if (!small)
-                SwinGame.DrawBitmap(GameImage(shipName), colLeft, rowTop);
+                SwinGame.DrawBitmap(GameResources.GameImage(shipName), colLeft, rowTop);
             else
             {
                 SwinGame.FillRectangle(SHIP_FILL_COLOR, colLeft, rowTop, shipWidth, shipHeight);
@@ -246,7 +247,7 @@ static class UtilityFunctions
     ///     ''' </summary>
     public static void DrawMessage()
     {
-        SwinGame.DrawText(Message, MESSAGE_COLOR, GameFont("Courier"), FIELD_LEFT, MESSAGE_TOP);
+        SwinGame.DrawText(Message, MESSAGE_COLOR, GameResources.GameFont("Courier"), FIELD_LEFT, MESSAGE_TOP);
     }
 
     /// <summary>
@@ -254,27 +255,27 @@ static class UtilityFunctions
     ///     ''' </summary>
     public static void DrawBackground()
     {
-        switch (CurrentState)
+        switch (GameController.CurrentState)
         {
             case object _ when GameState.ViewingMainMenu:
             case object _ when GameState.ViewingGameMenu:
             case object _ when GameState.AlteringSettings:
             case object _ when GameState.ViewingHighScores:
                 {
-                    SwinGame.DrawBitmap(GameImage("Menu"), 0, 0);
+                    SwinGame.DrawBitmap(GameResources.GameImage("Menu"), 0, 0);
                     break;
                 }
 
             case object _ when GameState.Discovering:
             case object _ when GameState.EndingGame:
                 {
-                    SwinGame.DrawBitmap(GameImage("Discovery"), 0, 0);
+                    SwinGame.DrawBitmap(GameResources.GameImage("Discovery"), 0, 0);
                     break;
                 }
 
             case object _ when GameState.Deploying:
                 {
-                    SwinGame.DrawBitmap(GameImage("Deploy"), 0, 0);
+                    SwinGame.DrawBitmap(GameResources.GameImage("Deploy"), 0, 0);
                     break;
                 }
 
@@ -305,7 +306,7 @@ static class UtilityFunctions
         Sprite s;
         Bitmap imgObj;
 
-        imgObj = GameImage(image);
+        imgObj = GameResources.GameImage(image);
         imgObj.SetCellDetails(40, 40, 3, 3, 7);
 
         AnimationScript animation;
@@ -348,7 +349,7 @@ static class UtilityFunctions
         for (i = 1; i <= ANIMATION_CELLS * FRAMES_PER_CELL; i++)
         {
             UpdateAnimations();
-            DrawScreen();
+            GameController.DrawScreen();
         }
     }
 }
