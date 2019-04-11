@@ -16,8 +16,8 @@ using SwinGameSDK;
 /// ''' </remarks>
 static class HighScoreController
 {
-    private const static int NAME_WIDTH = 3;
-    private const static int SCORES_LEFT = 490;
+    private const int NAME_WIDTH = 3;
+    private const int SCORES_LEFT = 490;
 
     /// <summary>
     ///     ''' The score structure is used to keep the name and
@@ -126,7 +126,7 @@ static class HighScoreController
         if (_Scores.Count == 0)
             LoadScores();
 
-        SwinGame.DrawText("   High Scores   ", Color.White, GameFont("Courier"), SCORES_LEFT, SCORES_HEADING);
+        SwinGame.DrawText("   High Scores   ", Color.White, SwinGame.FontNamed("Courier"), SCORES_LEFT, SCORES_HEADING); //changed GameFont to SwinGame.FontNamed()
 
         // For all of the scores
         int i;
@@ -138,9 +138,9 @@ static class HighScoreController
 
             // for scores 1 - 9 use 01 - 09
             if (i < 9)
-                SwinGame.DrawText(" " + (i + 1) + ":   " + s.Name + "   " + s.Value, Color.White, GameFont("Courier"), SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
+                SwinGame.DrawText(" " + (i + 1) + ":   " + s.Name + "   " + s.Value, Color.White, SwinGame.FontNamed("Courier"), SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
             else
-                SwinGame.DrawText(i + 1 + ":   " + s.Name + "   " + s.Value, Color.White, GameFont("Courier"), SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
+                SwinGame.DrawText(i + 1 + ":   " + s.Name + "   " + s.Value, Color.White, SwinGame.FontNamed("Courier"), SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
         }
     }
 
@@ -150,8 +150,8 @@ static class HighScoreController
     ///     ''' <remarks></remarks>
     public static void HandleHighScoreInput()
     {
-        if (SwinGame.MouseClicked(MouseButton.LeftButton) || SwinGame.KeyTyped(KeyCode.VK_ESCAPE) || SwinGame.KeyTyped(KeyCode.VK_RETURN))
-            EndCurrentState();
+        if (SwinGame.MouseClicked(MouseButton.LeftButton) || SwinGame.KeyTyped(KeyCode.EscapeKey) || SwinGame.KeyTyped(KeyCode.ReturnKey))
+            GameController.EndCurrentState();
     }
 
     /// <summary>
@@ -174,21 +174,21 @@ static class HighScoreController
             Score s = new Score();
             s.Value = value;
 
-            AddNewState(GameState.ViewingHighScores);
+            GameController.AddNewState(GameState.ViewingHighScores);
 
             int x;
-            x = SCORES_LEFT + SwinGame.TextWidth(GameFont("Courier"), "Name: ");
+            x = SCORES_LEFT + SwinGame.TextWidth(SwinGame.FontNamed("Courier"), "Name: ");
 
-            SwinGame.StartReadingText(Color.White, NAME_WIDTH, GameFont("Courier"), x, ENTRY_TOP);
+            SwinGame.StartReadingText(Color.White, NAME_WIDTH, SwinGame.FontNamed("Courier"), x, ENTRY_TOP);
 
             // Read the text from the user
             while (SwinGame.ReadingText())
             {
                 SwinGame.ProcessEvents();
 
-                DrawBackground();
+                UtilityFunctions.DrawBackground();
                 DrawHighScores();
-                SwinGame.DrawText("Name: ", Color.White, GameFont("Courier"), SCORES_LEFT, ENTRY_TOP);
+                SwinGame.DrawText("Name: ", Color.White, SwinGame.FontNamed("Courier"), SCORES_LEFT, ENTRY_TOP);
                 SwinGame.RefreshScreen();
             }
 
@@ -201,7 +201,7 @@ static class HighScoreController
             _Scores.Add(s);
             _Scores.Sort();
 
-            EndCurrentState();
+            GameController.EndCurrentState();
         }
     }
 }
