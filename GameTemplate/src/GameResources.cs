@@ -206,7 +206,7 @@ public static class GameResources
         const int BG_Y = 453;
 
         int fullW;
-        Rectangle toDraw;
+        Rectangle toDraw = new Rectangle();
 
         fullW = 260 * number / STEPS;
         SwinGame.DrawBitmap(_LoaderEmpty, BG_X, BG_Y);
@@ -227,7 +227,7 @@ public static class GameResources
     private static void EndLoadingScreen(int width, int height)
     {
         SwinGame.ProcessEvents();
-        SwinGame.Delay(500);
+        SwinGame.Delay(500); //TODO
         SwinGame.ClearScreen();
         SwinGame.RefreshScreen();
         SwinGame.FreeFont(_LoadingFont);
