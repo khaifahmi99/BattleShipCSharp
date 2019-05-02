@@ -22,6 +22,12 @@ static class GameLogic
 		do {
 			GameController.HandleUserInput();
 			GameController.DrawScreen();
+			Console.WriteLine(GameController.HandleMusic());
+			if(GameController.HandleMusic()) {
+				SwinGame.SetMusicVolume(0);
+			} else {
+				SwinGame.SetMusicVolume(1);
+			}
 		} while (!(SwinGame.WindowCloseRequested() == true | GameController.CurrentState == GameState.Quitting));
 
 		SwinGame.StopMusic();
