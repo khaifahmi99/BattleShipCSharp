@@ -176,9 +176,9 @@ public static class GameController
 				}
 
 				if (HumanPlayer.IsDestroyed) {
-					Audio.PlaySoundEffect(GameResources.GameSound("Loser"));
+					Audio.PlaySoundEffect(GameResources.GameSound("Lose"));
 				} else {
-					Audio.PlaySoundEffect(GameResources.GameSound("Win"));
+					Audio.PlaySoundEffect(GameResources.GameSound("Winner"));
 				}
 
 				break;

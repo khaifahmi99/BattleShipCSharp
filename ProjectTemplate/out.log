@@ -6,4 +6,3 @@ This compiler is provided as part of the Microsoft (R) .NET Framework, but only 
 
 src\Model\AIPlayer.cs(20,18): warning CS0660: 'AIPlayer.Location' defines operator == or operator != but does not override Object.Equals(object o)
 src\Model\AIPlayer.cs(20,18): warning CS0661: 'AIPlayer.Location' defines operator == or operator != but does not override Object.GetHashCode()
-src\HighScoreController.cs(127,9): error CS0200: Property or indexer 'GameController.CurrentState' cannot be assigned to -- it is read only
