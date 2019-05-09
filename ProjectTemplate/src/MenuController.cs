@@ -206,6 +206,7 @@ static class MenuController
 
 			if (SwinGame.MouseDown(MouseButton.LeftButton) & IsMouseOverMenu(i, level, xOffset)) {
 				SwinGame.DrawRectangle(HIGHLIGHT_COLOR, btnLeft, btnTop, BUTTON_WIDTH, BUTTON_HEIGHT);
+				SwinGame.DrawTextLines("New Difficulty Selected", Color.White, Color.Transparent, GameResources.GameFont("Courier"), FontAlignment.AlignCenter, 0, 450, SwinGame.ScreenWidth(), SwinGame.ScreenHeight());
 			}
 		}
 	}
