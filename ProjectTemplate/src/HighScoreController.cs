@@ -125,10 +125,11 @@ static class HighScoreController
 		if (_Scores.Count == 0)
 			LoadScores();
 
-		SwinGame.DrawText("   High Scores   ", Color.White, GameResources.GameFont("Courier"), SCORES_LEFT, SCORES_HEADING);
+		SwinGame.DrawText("   High Scores - Least Shots Fired  ", Color.White, GameResources.GameFont("Courier"), SCORES_LEFT, SCORES_HEADING);
 
 		//For all of the scores
 		int i = 0;
+        int a = 10;
 		for (i = 0; i <= _Scores.Count - 1; i++) {
 			Score s = default(Score);
 
@@ -136,10 +137,11 @@ static class HighScoreController
 
 			//for scores 1 - 9 use 01 - 09
 			if (i < 9) {
-				SwinGame.DrawText(" " + (i + 1) + ":   " + s.Name + "   " + s.Value, Color.White, GameResources.GameFont("Courier"), SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
+				SwinGame.DrawText(" " + (a) + ":   " + s.Name + "   " + s.Value, Color.White, GameResources.GameFont("Courier"), SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
 			} else {
-				SwinGame.DrawText(i + 1 + ":   " + s.Name + "   " + s.Value, Color.White, GameResources.GameFont("Courier"), SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
+				SwinGame.DrawText(a + ":   " + s.Name + "   " + s.Value, Color.White, GameResources.GameFont("Courier"), SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
 			}
+            a = (a - 1);
 		}
 	}
 
