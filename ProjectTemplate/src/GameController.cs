@@ -14,6 +14,7 @@ using SwinGameSDK;
 /// </summary>
 public static class GameController
 {
+	private static bool _isPaused;
 
 	private static BattleShipsGame _theGame;
 	private static Player _human;
@@ -298,6 +299,16 @@ public static class GameController
 		}
 
 		UtilityFunctions.UpdateAnimations();
+	}
+
+	public static bool HandleMusic() {
+		if(SwinGame.KeyDown(KeyCode.vk_p)){
+			_isPaused = true;
+		}
+		if(SwinGame.KeyDown(KeyCode.vk_o)){
+			_isPaused = false;
+		}
+		return _isPaused;
 	}
 
 	/// <summary>
